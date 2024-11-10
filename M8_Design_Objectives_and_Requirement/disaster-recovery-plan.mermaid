@@ -1,0 +1,17 @@
+stateDiagram-v2
+    [*] --> Normal
+    Normal --> Incident: Disaster Event
+    Incident --> Assessment: Trigger DRP
+    Assessment --> MinorRecovery: Low Impact
+    Assessment --> MajorRecovery: High Impact
+    
+    MinorRecovery --> Restoration: Local Recovery
+    MajorRecovery --> Failover: Region Switch
+    
+    Restoration --> Testing: Verify Systems
+    Failover --> Testing: Verify Systems
+    
+    Testing --> Normal: Success
+    Testing --> Assessment: Failure
+    
+    Normal --> [*]: System Stable
